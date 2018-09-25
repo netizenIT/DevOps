@@ -1,0 +1,32 @@
+Maven Install
+-----------------------------------------------------------------------------------------
+Download latest maven from https://maven.apache.org/download.cgi
+
+$ sudo su
+$ cd /opt
+$ wget http://www-us.apache.org/dist/maven/maven-3/3.5.4/binaries/apache-maven-3.5.4-bin.zip
+$ unzip apache-maven-3.5.4-bin.zip
+$ vi /etc/profile.d/maven.sh
+--Add--
+#!/bin/sh
+export PATH=$PATH:/opt/apache-maven-3.5.4/bin
+$ mvn --version
+$ exit [logout]
+
+Gradle Install 
+------------------------------------------------------------------------------------------
+$ sudo su
+$ cd /opt
+$ Download gradle latest version from https://gradle.org/releases/
+$ unzip gradle-4.5.1-bin.zip
+$ vi /etc/profile.d/gradle.sh
+--Add--
+#!/bin/sh
+export PATH=$PATH:/opt/gradle-4.5.1/bin
+$ gradle -version
+$ exit [logout]
+
+
+vi /etc/profile.d/ant.sh
+#!/bin/sh
+export PATH=$PATH:/opt/apache-ant-1.9.3/bin

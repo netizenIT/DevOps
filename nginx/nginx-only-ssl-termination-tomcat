@@ -1,0 +1,80 @@
+
+user nginx;
+worker_processes 1;
+
+error_log /var/log/nginx/error.log warn;
+pid /var/run/nginx.pid;
+
+
+events {
+
+	worker_connections 1024;
+}
+
+
+http {
+
+	include /etc/nginx/mime.types;
+	default_type application/octet-stream;
+
+	log_format main '$remote_addr - $remote_user [$time_local] "$request" '
+	'$status $body_bytes_sent "$http_referer" '
+	'"$http_user_agent" "$http_x_forwarded_for"';
+
+	access_log /var/log/nginx/access.log main;
+
+	sendfile on;
+	tcp_nopush on;
+	tcp_nodelay on;
+	keepalive_timeout 65;
+	types_hash_max_size 2048;
+	gzip off;
+	client_max_body_size 0;
+
+	ssl_certificate "/etc/nginx/bundle.crt";
+	ssl_certificate_key "/etc/nginx/pri.key";
+	ssl_session_cache shared:SSL:1m;
+	ssl_session_timeout 10m;
+	ssl_ciphers HIGH:!aNULL:!MD5;
+	ssl_prefer_server_ciphers on;
+
+	include /etc/nginx/conf.d/*.conf;
+
+	server {
+
+		listen 50000 ssl default_server;
+		server_name stg-api.augmedix.com;
+
+		location / {
+
+			proxy_pass http://auth:50000/;
+			proxy_set_header Host $host;
+			proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+			proxy_set_header X-Real-IP $remote_addr;
+			proxy_set_header X-Forwarded-Proto $scheme;
+			add_header Access-Control-Allow-Origin *;
+			add_header Access-Control-Allow-Methods "POST, GET, OPTIONS";
+			add_header Access-Control-Allow-Headers "Origin, Content-Type, Authorization, Accept";
+			add_header Access-Control-Allow-Credentials true;
+		}
+	}
+	server {
+
+		listen 50001 ssl default_server;
+		server_name stg-api.augmedix.com;
+
+		location / {
+
+			proxy_pass http://provider:50001/;
+			proxy_set_header Host $host;
+			proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+			proxy_set_header X-Real-IP $remote_addr;
+			proxy_set_header X-Forwarded-Proto $scheme;
+			add_header Access-Control-Allow-Origin *;
+			add_header Access-Control-Allow-Methods "POST, GET, OPTIONS";
+			add_header Access-Control-Allow-Headers "Origin, Content-Type, Authorization, Accept";
+			add_header Access-Control-Allow-Credentials true;
+
+		}
+	}
+}

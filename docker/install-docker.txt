@@ -1,0 +1,50 @@
+Docker
+-----------------------------------------------------------------------------------
+$sudo yum update                
+$ sudo tee /etc/yum.repos.d/docker.repo <<-EOF
+
+[dockerrepo]
+name=Docker Repository
+baseurl=https://yum.dockerproject.org/repo/main/centos/7
+enabled=1
+gpgcheck=1
+gpgkey=https://yum.dockerproject.org/gpg
+EOF
+                   
+$ sudo yum install docker-engine
+$ sudo groupadd docker
+$ sudo usermod -aG docker $USER
+
+Logout & Login to system
+
+Docker compose
+----------------------------------------------------------------------------------
+https://docs.docker.com/compose/install/#install-compose
+$ sudo curl -L https://github.com/docker/compose/releases/download/1.20.1/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
+$ sudo chmod +x /usr/local/bin/docker-compose
+$ docker-compose --version
+
+Ubuntu
+----------------------------------------------------------------------------------
+Uninstall old versions
+$sudo apt-get remove docker docker-engine docker.io
+
+Install using the repository
+----------------------------------------------------------------------------------
+$sudo apt-get update
+$sudo apt-get install \
+    apt-transport-https \
+    ca-certificates \
+    curl \
+    software-properties-common
+$curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+$sudo apt-key fingerprint 0EBFCD88
+$sudo add-apt-repository \
+   "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+   $(lsb_release -cs) \
+   stable"
+$sudo apt-get update
+$sudo apt-get install docker-ce
+Docker Build
+----------------------------------------------------------------------------------
+docker build -t augmedix/centos-tomcat .

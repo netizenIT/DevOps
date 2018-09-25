@@ -1,0 +1,57 @@
+version: '3'
+services:
+    augmedix-devscp-gateway:
+        image: 'haproxy:1.5.19'
+        container_name: haproxy-scp
+        ports:
+            - '9090:9090'
+        volumes:
+            - './configuration/haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg'
+        links:
+            - augmedix-dev-scp1
+            - augmedix-dev-scp2
+        networks:
+            - aug_env_scp_net
+    augmedix-dev-scp1:
+        image: 'augmedix/centos-tomcat:latest'
+        container_name: dev-scp1
+        environment:
+            - "JAVA_OPTS=-server -Xms6144m -Xmx6144m -XX:MaxMetaspaceSize=256m -XX:NewSize=400m -XX:SurvivorRatio=8 -XX:+CMSClassUnloadingEnabled -XX:+UseConcMarkSweepGC\n-XX:+CMSParallelRemarkEnabled -XX:+UseCMSInitiatingOccupancyOnly -XX:CMSInitiatingOccupancyFraction=70 -XX:+ScavengeBeforeFullGC -XX:+CMSScavengeBeforeRemark"
+        env_file:
+            - ./common.env
+        networks:
+            - aug_env_scp_net
+        volumes:
+            - './dev-env/dev-war:/opt/tomcat/webapps'
+            - './dev-env/conf:/opt/tomcat/conf'
+            - '/var/run/docker.sock:/var/run/docker.sock'
+    augmedix-dev-scp2:
+        image: 'augmedix/centos-tomcat:latest'
+        container_name: dev-scp2
+        environment:
+            - "JAVA_OPTS=-server -Xms6144m -Xmx6144m -XX:MaxMetaspaceSize=256m -XX:NewSize=400m -XX:SurvivorRatio=8 -XX:+CMSClassUnloadingEnabled -XX:+UseConcMarkSweepGC\n-XX:+CMSParallelRemarkEnabled -XX:+UseCMSInitiatingOccupancyOnly -XX:CMSInitiatingOccupancyFraction=70 -XX:+ScavengeBeforeFullGC -XX:+CMSScavengeBeforeRemark"
+        env_file:
+            - ./common.env
+        networks:
+            - aug_env_scp_net
+        volumes:
+            - './dev-env/dev-war:/opt/tomcat/webapps'
+            - './dev-env/conf:/opt/tomcat/conf'
+            - '/var/run/docker.sock:/var/run/docker.sock'
+    nginx:
+        image: nginx
+        volumes:
+            - './nginx/nginx.conf:/etc/nginx/nginx.conf'
+            - './nginx/bundle.crt:/etc/nginx/bundle.crt'
+            - './nginx/pri.key:/etc/nginx/pri.key'
+            - './nginx/content:/usr/share/nginx/html'
+        ports:
+            - '8191:8191'
+            - '50049:50049'
+        links:
+            - augmedix-devscp-gateway
+        networks:
+            - aug_env_scp_net
+networks:
+    aug_env_scp_net:
+        driver: bridge

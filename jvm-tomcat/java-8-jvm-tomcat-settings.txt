@@ -1,0 +1,85 @@
+-server
+-Xms<heap size>[g|m|k] -Xmx<heap size>[g|m|k]
+-XX:MaxMetaspaceSize=<metaspace size>[g|m|k]
+-Xmn<young size>[g|m|k]
+-XX:SurvivorRatio=<ratio>
+-XX:+CMSClassUnloadingEnabled
+-XX:+UseConcMarkSweepGC -XX:+CMSParallelRemarkEnabled
+-XX:+UseCMSInitiatingOccupancyOnly -XX:CMSInitiatingOccupancyFraction=<percent-70>
+-XX:+ScavengeBeforeFullGC -XX:+CMSScavengeBeforeRemark
+-XX:+PrintGCDateStamps -verbose:gc -XX:+PrintGCDetails -Xloggc:"<path to log>"
+-XX:+UseGCLogFileRotation -XX:NumberOfGCLogFiles=10 -XX:GCLogFileSize=100M
+-Dsun.net.inetaddr.ttl=<TTL in seconds>
+-XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=<path to dump>`date`.hprof
+-Djava.rmi.server.hostname=<external IP>
+-Dcom.sun.management.jmxremote.port=<port>
+-Dcom.sun.management.jmxremote.authenticate=false
+-Dcom.sun.management.jmxremote.ssl=false
+
+http://blog.sokolenko.me/2014/11/javavm-options-production.html
+
+setenv.sh -- <tomcat-home>/bin
+-------------------------------------------------------------------
+export CATALINA_OPTS="$CATALINA_OPTS -server"
+export CATALINA_OPTS="$CATALINA_OPTS -Xms6144m"
+export CATALINA_OPTS="$CATALINA_OPTS -Xmx6144m"
+export CATALINA_OPTS="$CATALINA_OPTS -XX:MaxMetaspaceSize=256m"
+export CATALINA_OPTS="$CATALINA_OPTS -XX:NewSize=400m"
+export CATALINA_OPTS="$CATALINA_OPTS -XX:SurvivorRatio=8"
+export CATALINA_OPTS="$CATALINA_OPTS -XX:+CMSClassUnloadingEnabled"
+export CATALINA_OPTS="$CATALINA_OPTS -XX:+UseConcMarkSweepGC"
+export CATALINA_OPTS="$CATALINA_OPTS -XX:+CMSParallelRemarkEnabled"
+export CATALINA_OPTS="$CATALINA_OPTS -XX:+UseCMSInitiatingOccupancyOnly"
+export CATALINA_OPTS="$CATALINA_OPTS -XX:CMSInitiatingOccupancyFraction=70"
+export CATALINA_OPTS="$CATALINA_OPTS -XX:+ScavengeBeforeFullGC"
+export CATALINA_OPTS="$CATALINA_OPTS -XX:+CMSScavengeBeforeRemark"
+export CATALINA_OPTS="$CATALINA_OPTS -XX:+PrintGCDateStamps -verbose:gc"
+export CATALINA_OPTS="$CATALINA_OPTS -XX:+PrintGCDetails"
+export CATALINA_OPTS="$CATALINA_OPTS -Xloggc:/tmp/gcd.log"
+export CATALINA_OPTS="$CATALINA_OPTS -XX:+UseGCLogFileRotation"
+export CATALINA_OPTS="$CATALINA_OPTS -XX:NumberOfGCLogFiles=15"
+export CATALINA_OPTS="$CATALINA_OPTS -XX:GCLogFileSize=100M"
+export CATALINA_OPTS="$CATALINA_OPTS -XX:+HeapDumpOnOutOfMemoryError"
+export CATALINA_OPTS="$CATALINA_OPTS -XX:HeapDumpPath=/tmp/hd.hprof"
+
+conf/server.xml
+-------------------------------------------------------------------
+<Connector port="8080"
+           protocol="org.apache.coyote.http11.Http11NioProtocol"
+           connectionTimeout="35000"
+           redirectPort="8443"
+           maxThreads="10000"
+           minSpareThreads="25"
+           acceptCount="5000"
+           acceptorThreadCount="2"
+           disableUploadTimeout="true"
+           enableLookups="false"
+           socket.appReadBufSize="2048"
+           socket.appWriteBufSize="2048"
+           URIEncoding="UTF-8" />
+
+Tomcat service configuration
+------------------------------------------------------------------
+sudo vi /etc/systemd/system/tomcat.service
+
+[Unit]
+Description=Apache Tomcat Web Application Container
+After=syslog.target network.target
+
+[Service]
+Type=forking
+
+Environment=JAVA_HOME=/usr/share/jvm/jdk1.8.0_181
+Environment=CATALINA_PID=/usr/share/tommy/temp/tomcat.pid
+Environment=CATALINA_HOME=/usr/share/tommy
+Environment=CATALINA_BASE=/usr/share/tommy
+Environment='JAVA_OPTS=-Djava.awt.headless=true -Djava.security.egd=file:/dev/./urandom'
+
+ExecStart=/usr/share/tommy/bin/startup.sh
+ExecStop=/bin/kill -15 $MAINPID
+
+User=root
+Group=root
+
+[Install]
+WantedBy=multi-user.target

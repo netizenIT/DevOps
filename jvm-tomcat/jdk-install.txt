@@ -1,0 +1,44 @@
+Ubuntu-Latest
+----------------------------------------------------------------------------------------------------------------------
+$ sudo add-apt-repository ppa:webupd8team/java
+$ sudo apt-get update
+$ sudo apt-get install oracle-java8-installer
+$ sudo apt-get install oracle-java8-set-default
+Test JDK has been installed successfully :: javac
+
+Redhat-7
+---------------------------------------------------------------------------------------------------------------------
+$cd /usr/share/
+$mkdir jvm
+$cd jvm
+$wget --no-cookies --no-check-certificate --header "Cookie: oraclelicense=accept-securebackup-cookie" \
+http://download.oracle.com/otn-pub/java/jdk/8u172-b11/a58eab1ec242421181065cdc37240b08/jdk-8u172-linux-x64.tar.gz \
+-O jdk-8_linux-x64_bin.tar.gz
+
+$ vi /etc/profile.d/jdk_home.sh
+--Add--
+#!/bin/sh
+JAVA_HOME=/usr/share/jvm/jdk1.8.0_172
+export JAVA_HOME
+PATH=$JAVA_HOME/bin:$PATH
+export PATH
+$ exit
+$ javac
+#/usr/share/jvm/jdk1.8.0_172
+
+Install by script
+---------------------------------------------------------------------------------------------------------------------
+#!/bin/bash
+yum update -y;
+yum install -y wget;
+mkdir /usr/share/jvm;
+cd /usr/share/jvm;
+wget --no-cookies --no-check-certificate --header "Cookie: oraclelicense=accept-securebackup-cookie" \
+http://download.oracle.com/otn-pub/java/jdk/8u181-b13/96a7b8442fe848ef90c96a2fad6ed6d1/jdk-8u181-linux-x64.tar.gz \
+-O jdk-8_linux-x64_bin.tar.gz;
+tar -xzf jdk-8_linux-x64_bin.tar.gz;echo -e "#!/bin/bash
+JAVA_HOME=/usr/share/jvm/jdk1.8.0_181
+export JAVA_HOME
+PATH=\$JAVA_HOME/bin:\$PATH
+export PATH
+" > /etc/profile.d/jdk_set_home.sh

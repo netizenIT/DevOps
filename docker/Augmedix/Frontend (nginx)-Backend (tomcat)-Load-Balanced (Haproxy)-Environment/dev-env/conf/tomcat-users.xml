@@ -1,0 +1,534 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<tomcat-users xmlns="http://tomcat.apache.org/xml"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://tomcat.apache.org/xml tomcat-users.xsd"
+              version="1.0">
+<!--
+  NOTE:  By default, no user is included in the "manager-gui" role required
+  to operate the "/manager/html" web application.  If you wish to use this app,
+  you must define such a user - the username and password are arbitrary. It is
+  strongly recommended that you do NOT use one of the users in the commented out
+  section below since they are intended for use with the examples web
+  application.
+-->
+<!--
+  NOTE:  The sample user and role entries below are intended for use with the
+  examples web application. They are wrapped in a comment and thus are ignored
+  when reading this file. If you wish to configure these users for use with the
+  examples web application, do not forget to remove the <!.. ..> that surrounds
+  them. You will also need to set the passwords to something appropriate.
+-->
+<!--
+  <role rolename="tomcat"/>
+  <role rolename="role1"/>
+  <user username="tomcat" password="<must-be-changed>" roles="tomcat"/>
+  <user username="both" password="<must-be-changed>" roles="tomcat,role1"/>
+  <user username="role1" password="<must-be-changed>" roles="role1"/>
+-->
+
+<role rolename="manager-gui"/>
+<role rolename="manager-script"/>
+<role rolename="manager-jmx"/>
+<role rolename="admin-gui"/>
+<role rolename="admin-script"/>
+<user username="admin" password="csTt3TnBOE" roles="manager-gui,manager-script,manager-jmx,admin-gui, admin-script"/>
+
+<role rolename="manager-gui"/>
+<role rolename="manager-script"/>
+<role rolename="manager-jmx"/>
+<role rolename="admin-gui"/>
+<role rolename="admin-script"/>
+<user username="admin" password="RXHhPs6IuU" roles="manager-gui,manager-script,manager-jmx,admin-gui, admin-script"/>
+
+<role rolename="manager-gui"/>
+<role rolename="manager-script"/>
+<role rolename="manager-jmx"/>
+<role rolename="admin-gui"/>
+<role rolename="admin-script"/>
+<user username="admin" password="Kf3NjRC5Jc" roles="manager-gui,manager-script,manager-jmx,admin-gui, admin-script"/>
+
+<role rolename="manager-gui"/>
+<role rolename="manager-script"/>
+<role rolename="manager-jmx"/>
+<role rolename="admin-gui"/>
+<role rolename="admin-script"/>
+<user username="admin" password="q0TsBppGQ0" roles="manager-gui,manager-script,manager-jmx,admin-gui, admin-script"/>
+
+<role rolename="manager-gui"/>
+<role rolename="manager-script"/>
+<role rolename="manager-jmx"/>
+<role rolename="admin-gui"/>
+<role rolename="admin-script"/>
+<user username="admin" password="sykolsvCc9" roles="manager-gui,manager-script,manager-jmx,admin-gui, admin-script"/>
+
+<role rolename="manager-gui"/>
+<role rolename="manager-script"/>
+<role rolename="manager-jmx"/>
+<role rolename="admin-gui"/>
+<role rolename="admin-script"/>
+<user username="admin" password="kkavX3bg6Z" roles="manager-gui,manager-script,manager-jmx,admin-gui, admin-script"/>
+
+<role rolename="manager-gui"/>
+<role rolename="manager-script"/>
+<role rolename="manager-jmx"/>
+<role rolename="admin-gui"/>
+<role rolename="admin-script"/>
+<user username="admin" password="7ms2niY06N" roles="manager-gui,manager-script,manager-jmx,admin-gui, admin-script"/>
+
+<role rolename="manager-gui"/>
+<role rolename="manager-script"/>
+<role rolename="manager-jmx"/>
+<role rolename="admin-gui"/>
+<role rolename="admin-script"/>
+<user username="admin" password="FrSr4zvIru" roles="manager-gui,manager-script,manager-jmx,admin-gui, admin-script"/>
+
+<role rolename="manager-gui"/>
+<role rolename="manager-script"/>
+<role rolename="manager-jmx"/>
+<role rolename="admin-gui"/>
+<role rolename="admin-script"/>
+<user username="admin" password="ipuOE4hBCX" roles="manager-gui,manager-script,manager-jmx,admin-gui, admin-script"/>
+
+<role rolename="manager-gui"/>
+<role rolename="manager-script"/>
+<role rolename="manager-jmx"/>
+<role rolename="admin-gui"/>
+<role rolename="admin-script"/>
+<user username="admin" password="tvYD4SsDUg" roles="manager-gui,manager-script,manager-jmx,admin-gui, admin-script"/>
+
+<role rolename="manager-gui"/>
+<role rolename="manager-script"/>
+<role rolename="manager-jmx"/>
+<role rolename="admin-gui"/>
+<role rolename="admin-script"/>
+<user username="admin" password="gZxvEYP2Gk" roles="manager-gui,manager-script,manager-jmx,admin-gui, admin-script"/>
+
+<role rolename="manager-gui"/>
+<role rolename="manager-script"/>
+<role rolename="manager-jmx"/>
+<role rolename="admin-gui"/>
+<role rolename="admin-script"/>
+<user username="admin" password="qjJ7mSwFJn" roles="manager-gui,manager-script,manager-jmx,admin-gui, admin-script"/>
+
+<role rolename="manager-gui"/>
+<role rolename="manager-script"/>
+<role rolename="manager-jmx"/>
+<role rolename="admin-gui"/>
+<role rolename="admin-script"/>
+<user username="admin" password="cCOegqSX5K" roles="manager-gui,manager-script,manager-jmx,admin-gui, admin-script"/>
+
+<role rolename="manager-gui"/>
+<role rolename="manager-script"/>
+<role rolename="manager-jmx"/>
+<role rolename="admin-gui"/>
+<role rolename="admin-script"/>
+<user username="admin" password="JuYLnyUCuX" roles="manager-gui,manager-script,manager-jmx,admin-gui, admin-script"/>
+
+<role rolename="manager-gui"/>
+<role rolename="manager-script"/>
+<role rolename="manager-jmx"/>
+<role rolename="admin-gui"/>
+<role rolename="admin-script"/>
+<user username="admin" password="YNT7FzJ3Gw" roles="manager-gui,manager-script,manager-jmx,admin-gui, admin-script"/>
+
+<role rolename="manager-gui"/>
+<role rolename="manager-script"/>
+<role rolename="manager-jmx"/>
+<role rolename="admin-gui"/>
+<role rolename="admin-script"/>
+<user username="admin" password="tjfCGrUvzp" roles="manager-gui,manager-script,manager-jmx,admin-gui, admin-script"/>
+
+<role rolename="manager-gui"/>
+<role rolename="manager-script"/>
+<role rolename="manager-jmx"/>
+<role rolename="admin-gui"/>
+<role rolename="admin-script"/>
+<user username="admin" password="ohFvmquuh4" roles="manager-gui,manager-script,manager-jmx,admin-gui, admin-script"/>
+
+<role rolename="manager-gui"/>
+<role rolename="manager-script"/>
+<role rolename="manager-jmx"/>
+<role rolename="admin-gui"/>
+<role rolename="admin-script"/>
+<user username="admin" password="cIdAO2nVuF" roles="manager-gui,manager-script,manager-jmx,admin-gui, admin-script"/>
+
+<role rolename="manager-gui"/>
+<role rolename="manager-script"/>
+<role rolename="manager-jmx"/>
+<role rolename="admin-gui"/>
+<role rolename="admin-script"/>
+<user username="admin" password="UylykZ9GhI" roles="manager-gui,manager-script,manager-jmx,admin-gui, admin-script"/>
+
+<role rolename="manager-gui"/>
+<role rolename="manager-script"/>
+<role rolename="manager-jmx"/>
+<role rolename="admin-gui"/>
+<role rolename="admin-script"/>
+<user username="admin" password="UGUk67MJkl" roles="manager-gui,manager-script,manager-jmx,admin-gui, admin-script"/>
+
+<role rolename="manager-gui"/>
+<role rolename="manager-script"/>
+<role rolename="manager-jmx"/>
+<role rolename="admin-gui"/>
+<role rolename="admin-script"/>
+<user username="admin" password="bPsPN725GY" roles="manager-gui,manager-script,manager-jmx,admin-gui, admin-script"/>
+
+<role rolename="manager-gui"/>
+<role rolename="manager-script"/>
+<role rolename="manager-jmx"/>
+<role rolename="admin-gui"/>
+<role rolename="admin-script"/>
+<user username="admin" password="MQV3uretET" roles="manager-gui,manager-script,manager-jmx,admin-gui, admin-script"/>
+
+<role rolename="manager-gui"/>
+<role rolename="manager-script"/>
+<role rolename="manager-jmx"/>
+<role rolename="admin-gui"/>
+<role rolename="admin-script"/>
+<user username="admin" password="nxmrzsdvUO" roles="manager-gui,manager-script,manager-jmx,admin-gui, admin-script"/>
+
+<role rolename="manager-gui"/>
+<role rolename="manager-script"/>
+<role rolename="manager-jmx"/>
+<role rolename="admin-gui"/>
+<role rolename="admin-script"/>
+<user username="admin" password="QGRCU3nkP3" roles="manager-gui,manager-script,manager-jmx,admin-gui, admin-script"/>
+
+<role rolename="manager-gui"/>
+<role rolename="manager-script"/>
+<role rolename="manager-jmx"/>
+<role rolename="admin-gui"/>
+<role rolename="admin-script"/>
+<user username="admin" password="lyuHA9t3hH" roles="manager-gui,manager-script,manager-jmx,admin-gui, admin-script"/>
+
+<role rolename="manager-gui"/>
+<role rolename="manager-script"/>
+<role rolename="manager-jmx"/>
+<role rolename="admin-gui"/>
+<role rolename="admin-script"/>
+<user username="admin" password="YEZbHmEqlg" roles="manager-gui,manager-script,manager-jmx,admin-gui, admin-script"/>
+
+<role rolename="manager-gui"/>
+<role rolename="manager-script"/>
+<role rolename="manager-jmx"/>
+<role rolename="admin-gui"/>
+<role rolename="admin-script"/>
+<user username="admin" password="leLoXguZkb" roles="manager-gui,manager-script,manager-jmx,admin-gui, admin-script"/>
+
+<role rolename="manager-gui"/>
+<role rolename="manager-script"/>
+<role rolename="manager-jmx"/>
+<role rolename="admin-gui"/>
+<role rolename="admin-script"/>
+<user username="admin" password="0GXam9JG6U" roles="manager-gui,manager-script,manager-jmx,admin-gui, admin-script"/>
+
+<role rolename="manager-gui"/>
+<role rolename="manager-script"/>
+<role rolename="manager-jmx"/>
+<role rolename="admin-gui"/>
+<role rolename="admin-script"/>
+<user username="admin" password="w6yIWCKKXZ" roles="manager-gui,manager-script,manager-jmx,admin-gui, admin-script"/>
+
+<role rolename="manager-gui"/>
+<role rolename="manager-script"/>
+<role rolename="manager-jmx"/>
+<role rolename="admin-gui"/>
+<role rolename="admin-script"/>
+<user username="admin" password="xkehxgXfFH" roles="manager-gui,manager-script,manager-jmx,admin-gui, admin-script"/>
+
+<role rolename="manager-gui"/>
+<role rolename="manager-script"/>
+<role rolename="manager-jmx"/>
+<role rolename="admin-gui"/>
+<role rolename="admin-script"/>
+<user username="admin" password="iOgv5PkeNr" roles="manager-gui,manager-script,manager-jmx,admin-gui, admin-script"/>
+
+<role rolename="manager-gui"/>
+<role rolename="manager-script"/>
+<role rolename="manager-jmx"/>
+<role rolename="admin-gui"/>
+<role rolename="admin-script"/>
+<user username="admin" password="rRzrsdYCat" roles="manager-gui,manager-script,manager-jmx,admin-gui, admin-script"/>
+
+<role rolename="manager-gui"/>
+<role rolename="manager-script"/>
+<role rolename="manager-jmx"/>
+<role rolename="admin-gui"/>
+<role rolename="admin-script"/>
+<user username="admin" password="VcM9rowJVg" roles="manager-gui,manager-script,manager-jmx,admin-gui, admin-script"/>
+
+<role rolename="manager-gui"/>
+<role rolename="manager-script"/>
+<role rolename="manager-jmx"/>
+<role rolename="admin-gui"/>
+<role rolename="admin-script"/>
+<user username="admin" password="yzfffChlZK" roles="manager-gui,manager-script,manager-jmx,admin-gui, admin-script"/>
+
+<role rolename="manager-gui"/>
+<role rolename="manager-script"/>
+<role rolename="manager-jmx"/>
+<role rolename="admin-gui"/>
+<role rolename="admin-script"/>
+<user username="admin" password="8vz7yuleAx" roles="manager-gui,manager-script,manager-jmx,admin-gui, admin-script"/>
+
+<role rolename="manager-gui"/>
+<role rolename="manager-script"/>
+<role rolename="manager-jmx"/>
+<role rolename="admin-gui"/>
+<role rolename="admin-script"/>
+<user username="admin" password="9GYmIil8Yq" roles="manager-gui,manager-script,manager-jmx,admin-gui, admin-script"/>
+
+<role rolename="manager-gui"/>
+<role rolename="manager-script"/>
+<role rolename="manager-jmx"/>
+<role rolename="admin-gui"/>
+<role rolename="admin-script"/>
+<user username="admin" password="LMfICfI9Qs" roles="manager-gui,manager-script,manager-jmx,admin-gui, admin-script"/>
+
+<role rolename="manager-gui"/>
+<role rolename="manager-script"/>
+<role rolename="manager-jmx"/>
+<role rolename="admin-gui"/>
+<role rolename="admin-script"/>
+<user username="admin" password="tRa7740KdJ" roles="manager-gui,manager-script,manager-jmx,admin-gui, admin-script"/>
+
+<role rolename="manager-gui"/>
+<role rolename="manager-script"/>
+<role rolename="manager-jmx"/>
+<role rolename="admin-gui"/>
+<role rolename="admin-script"/>
+<user username="admin" password="ivlWM76OkU" roles="manager-gui,manager-script,manager-jmx,admin-gui, admin-script"/>
+
+<role rolename="manager-gui"/>
+<role rolename="manager-script"/>
+<role rolename="manager-jmx"/>
+<role rolename="admin-gui"/>
+<role rolename="admin-script"/>
+<user username="admin" password="P2ikj4CVvn" roles="manager-gui,manager-script,manager-jmx,admin-gui, admin-script"/>
+
+<role rolename="manager-gui"/>
+<role rolename="manager-script"/>
+<role rolename="manager-jmx"/>
+<role rolename="admin-gui"/>
+<role rolename="admin-script"/>
+<user username="admin" password="Pfn8VLaEfs" roles="manager-gui,manager-script,manager-jmx,admin-gui, admin-script"/>
+
+<role rolename="manager-gui"/>
+<role rolename="manager-script"/>
+<role rolename="manager-jmx"/>
+<role rolename="admin-gui"/>
+<role rolename="admin-script"/>
+<user username="admin" password="3Bva9RApRj" roles="manager-gui,manager-script,manager-jmx,admin-gui, admin-script"/>
+
+<role rolename="manager-gui"/>
+<role rolename="manager-script"/>
+<role rolename="manager-jmx"/>
+<role rolename="admin-gui"/>
+<role rolename="admin-script"/>
+<user username="admin" password="zHXgt2IyBd" roles="manager-gui,manager-script,manager-jmx,admin-gui, admin-script"/>
+
+<role rolename="manager-gui"/>
+<role rolename="manager-script"/>
+<role rolename="manager-jmx"/>
+<role rolename="admin-gui"/>
+<role rolename="admin-script"/>
+<user username="admin" password="kw9e3kQtFg" roles="manager-gui,manager-script,manager-jmx,admin-gui, admin-script"/>
+
+<role rolename="manager-gui"/>
+<role rolename="manager-script"/>
+<role rolename="manager-jmx"/>
+<role rolename="admin-gui"/>
+<role rolename="admin-script"/>
+<user username="admin" password="8TtY1LVxyW" roles="manager-gui,manager-script,manager-jmx,admin-gui, admin-script"/>
+
+<role rolename="manager-gui"/>
+<role rolename="manager-script"/>
+<role rolename="manager-jmx"/>
+<role rolename="admin-gui"/>
+<role rolename="admin-script"/>
+<user username="admin" password="WhTar6CJrq" roles="manager-gui,manager-script,manager-jmx,admin-gui, admin-script"/>
+
+<role rolename="manager-gui"/>
+<role rolename="manager-script"/>
+<role rolename="manager-jmx"/>
+<role rolename="admin-gui"/>
+<role rolename="admin-script"/>
+<user username="admin" password="SAEuOYRUtb" roles="manager-gui,manager-script,manager-jmx,admin-gui, admin-script"/>
+
+<role rolename="manager-gui"/>
+<role rolename="manager-script"/>
+<role rolename="manager-jmx"/>
+<role rolename="admin-gui"/>
+<role rolename="admin-script"/>
+<user username="admin" password="yWSdzLhQSA" roles="manager-gui,manager-script,manager-jmx,admin-gui, admin-script"/>
+
+<role rolename="manager-gui"/>
+<role rolename="manager-script"/>
+<role rolename="manager-jmx"/>
+<role rolename="admin-gui"/>
+<role rolename="admin-script"/>
+<user username="admin" password="XmqLs2QBN9" roles="manager-gui,manager-script,manager-jmx,admin-gui, admin-script"/>
+
+<role rolename="manager-gui"/>
+<role rolename="manager-script"/>
+<role rolename="manager-jmx"/>
+<role rolename="admin-gui"/>
+<role rolename="admin-script"/>
+<user username="admin" password="Mo8rZkC9eH" roles="manager-gui,manager-script,manager-jmx,admin-gui, admin-script"/>
+
+<role rolename="manager-gui"/>
+<role rolename="manager-script"/>
+<role rolename="manager-jmx"/>
+<role rolename="admin-gui"/>
+<role rolename="admin-script"/>
+<user username="admin" password="K8mETGtQE3" roles="manager-gui,manager-script,manager-jmx,admin-gui, admin-script"/>
+
+<role rolename="manager-gui"/>
+<role rolename="manager-script"/>
+<role rolename="manager-jmx"/>
+<role rolename="admin-gui"/>
+<role rolename="admin-script"/>
+<user username="admin" password="KRgqCpKXH6" roles="manager-gui,manager-script,manager-jmx,admin-gui, admin-script"/>
+
+<role rolename="manager-gui"/>
+<role rolename="manager-script"/>
+<role rolename="manager-jmx"/>
+<role rolename="admin-gui"/>
+<role rolename="admin-script"/>
+<user username="admin" password="fHDMVHSoHt" roles="manager-gui,manager-script,manager-jmx,admin-gui, admin-script"/>
+
+<role rolename="manager-gui"/>
+<role rolename="manager-script"/>
+<role rolename="manager-jmx"/>
+<role rolename="admin-gui"/>
+<role rolename="admin-script"/>
+<user username="admin" password="Rxcbj5gTYS" roles="manager-gui,manager-script,manager-jmx,admin-gui, admin-script"/>
+
+<role rolename="manager-gui"/>
+<role rolename="manager-script"/>
+<role rolename="manager-jmx"/>
+<role rolename="admin-gui"/>
+<role rolename="admin-script"/>
+<user username="admin" password="mXd0GWUeKF" roles="manager-gui,manager-script,manager-jmx,admin-gui, admin-script"/>
+
+<role rolename="manager-gui"/>
+<role rolename="manager-script"/>
+<role rolename="manager-jmx"/>
+<role rolename="admin-gui"/>
+<role rolename="admin-script"/>
+<user username="admin" password="mkcqCFgqCZ" roles="manager-gui,manager-script,manager-jmx,admin-gui, admin-script"/>
+
+<role rolename="manager-gui"/>
+<role rolename="manager-script"/>
+<role rolename="manager-jmx"/>
+<role rolename="admin-gui"/>
+<role rolename="admin-script"/>
+<user username="admin" password="3mcZBbQTIx" roles="manager-gui,manager-script,manager-jmx,admin-gui, admin-script"/>
+
+<role rolename="manager-gui"/>
+<role rolename="manager-script"/>
+<role rolename="manager-jmx"/>
+<role rolename="admin-gui"/>
+<role rolename="admin-script"/>
+<user username="admin" password="egWvwVv0Vl" roles="manager-gui,manager-script,manager-jmx,admin-gui, admin-script"/>
+
+<role rolename="manager-gui"/>
+<role rolename="manager-script"/>
+<role rolename="manager-jmx"/>
+<role rolename="admin-gui"/>
+<role rolename="admin-script"/>
+<user username="admin" password="5qu7GhNOW3" roles="manager-gui,manager-script,manager-jmx,admin-gui, admin-script"/>
+
+<role rolename="manager-gui"/>
+<role rolename="manager-script"/>
+<role rolename="manager-jmx"/>
+<role rolename="admin-gui"/>
+<role rolename="admin-script"/>
+<user username="admin" password="KPbVv7Yqi9" roles="manager-gui,manager-script,manager-jmx,admin-gui, admin-script"/>
+
+<role rolename="manager-gui"/>
+<role rolename="manager-script"/>
+<role rolename="manager-jmx"/>
+<role rolename="admin-gui"/>
+<role rolename="admin-script"/>
+<user username="admin" password="GZHIhcXoBK" roles="manager-gui,manager-script,manager-jmx,admin-gui, admin-script"/>
+
+<role rolename="manager-gui"/>
+<role rolename="manager-script"/>
+<role rolename="manager-jmx"/>
+<role rolename="admin-gui"/>
+<role rolename="admin-script"/>
+<user username="admin" password="fHbKopypb9" roles="manager-gui,manager-script,manager-jmx,admin-gui, admin-script"/>
+
+<role rolename="manager-gui"/>
+<role rolename="manager-script"/>
+<role rolename="manager-jmx"/>
+<role rolename="admin-gui"/>
+<role rolename="admin-script"/>
+<user username="admin" password="DuhnVeagj0" roles="manager-gui,manager-script,manager-jmx,admin-gui, admin-script"/>
+
+<role rolename="manager-gui"/>
+<role rolename="manager-script"/>
+<role rolename="manager-jmx"/>
+<role rolename="admin-gui"/>
+<role rolename="admin-script"/>
+<user username="admin" password="GfV1NBQ9Ag" roles="manager-gui,manager-script,manager-jmx,admin-gui, admin-script"/>
+
+<role rolename="manager-gui"/>
+<role rolename="manager-script"/>
+<role rolename="manager-jmx"/>
+<role rolename="admin-gui"/>
+<role rolename="admin-script"/>
+<user username="admin" password="F7z6EaluWt" roles="manager-gui,manager-script,manager-jmx,admin-gui, admin-script"/>
+
+<role rolename="manager-gui"/>
+<role rolename="manager-script"/>
+<role rolename="manager-jmx"/>
+<role rolename="admin-gui"/>
+<role rolename="admin-script"/>
+<user username="admin" password="s2A7K8fJSq" roles="manager-gui,manager-script,manager-jmx,admin-gui, admin-script"/>
+
+<role rolename="manager-gui"/>
+<role rolename="manager-script"/>
+<role rolename="manager-jmx"/>
+<role rolename="admin-gui"/>
+<role rolename="admin-script"/>
+<user username="admin" password="3MXgKQsNQ7" roles="manager-gui,manager-script,manager-jmx,admin-gui, admin-script"/>
+
+<role rolename="manager-gui"/>
+<role rolename="manager-script"/>
+<role rolename="manager-jmx"/>
+<role rolename="admin-gui"/>
+<role rolename="admin-script"/>
+<user username="admin" password="jfkEv2Z37O" roles="manager-gui,manager-script,manager-jmx,admin-gui, admin-script"/>
+
+<role rolename="manager-gui"/>
+<role rolename="manager-script"/>
+<role rolename="manager-jmx"/>
+<role rolename="admin-gui"/>
+<role rolename="admin-script"/>
+<user username="admin" password="bUqPyjSe9Z" roles="manager-gui,manager-script,manager-jmx,admin-gui, admin-script"/>
+
+<role rolename="manager-gui"/>
+<role rolename="manager-script"/>
+<role rolename="manager-jmx"/>
+<role rolename="admin-gui"/>
+<role rolename="admin-script"/>
+<user username="admin" password="q25ud0dMRX" roles="manager-gui,manager-script,manager-jmx,admin-gui, admin-script"/>
+</tomcat-users>
