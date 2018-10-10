@@ -1,0 +1,42 @@
+Download command line tool only from:
+https://developer.android.com/studio/#downloads
+
+Download and Install Android SDK : 
+--------------------------------------------------------------------------
+# mkdir -p /opt/sdk-tools-linux-4333796
+# cd /opt/sdk-tools-linux-4333796
+# sudo wget https://dl.google.com/android/repository/sdk-tools-linux-4333796.zip
+# sudo unzip sdk-tools-linux-4333796.zip
+# cd /opt
+# sudo chown -R root:root sdk-tools-linux-4333796
+# sudo ln -s sdk-tools-linux-4333796 android-sdk
+
+Set Android SDK Environment Value:
+--------------------------------------------------------------------------
+# sudo vim /etc/profile.d/android-sdk-env.sh
+
+export ANDROID_HOME="/opt/android-sdk"
+export PATH="$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$PATH"
+
+# sudo source /etc/profile.d/android-sdk-env.sh
+
+Update Android SDK :
+--------------------------------------------------------------------------
+# cd /opt/android-sdk/tools
+# sudo ./android update sdk --no-ui
+
+Update Android SDK :
+--------------------------------------------------------------------------
+This is an example.
+# /opt/android-sdk/tools/bin/sdkmanager --list
+# /opt/android-sdk/tools/bin/sdkmanager "tools" "build-tools;26.0.0" "extras;android;m2repository" "extras;google;google_play_services" "platforms;android-26" "platform-tools"
+
+Licence Aggrement : 
+--------------------------------------------------------------------------
+sudo su
+cd /opt/android-sdk/tools/bin
+./sdkmanager --licenses
+
+vi ~/.bash_profile
+export ANDROID_HOME="/opt/android-sdk"
+export PATH="$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$PATH"
