@@ -23,8 +23,8 @@ setenv.sh -- <tomcat-home>/bin
 export CATALINA_OPTS="$CATALINA_OPTS -server"
 export CATALINA_OPTS="$CATALINA_OPTS -Xms6144m"
 export CATALINA_OPTS="$CATALINA_OPTS -Xmx6144m"
-export CATALINA_OPTS="$CATALINA_OPTS -XX:MaxMetaspaceSize=256m"
-export CATALINA_OPTS="$CATALINA_OPTS -XX:NewSize=400m"
+export CATALINA_OPTS="$CATALINA_OPTS -XX:MaxMetaspaceSize=1024m"
+export CATALINA_OPTS="$CATALINA_OPTS -XX:NewSize=512m"
 export CATALINA_OPTS="$CATALINA_OPTS -XX:SurvivorRatio=8"
 export CATALINA_OPTS="$CATALINA_OPTS -XX:+CMSClassUnloadingEnabled"
 export CATALINA_OPTS="$CATALINA_OPTS -XX:+UseConcMarkSweepGC"
@@ -69,7 +69,7 @@ After=syslog.target network.target
 [Service]
 Type=forking
 
-Environment=JAVA_HOME=/usr/share/jvm/jdk1.8.0_181
+Environment=JAVA_HOME=/usr/share/jvm/jdk1.8.0_191
 Environment=CATALINA_PID=/usr/share/tommy/temp/tomcat.pid
 Environment=CATALINA_HOME=/usr/share/tommy
 Environment=CATALINA_BASE=/usr/share/tommy
