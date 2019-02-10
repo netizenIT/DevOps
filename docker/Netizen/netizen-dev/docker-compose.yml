@@ -1,0 +1,209 @@
+version: '3'
+services:
+    #haproxy for emapi load balancing
+    netizen-dev-loadbalancer:
+        image: 'haproxy:1.5.19'
+        container_name: dev-hap-loadbalancer
+        restart: always
+        ports:
+            - '8383:8383'
+            - '8484:8484'
+            - '8585:8585'
+        volumes:
+            - './configuration/haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg'
+        links:
+            - netizen-dev-emapi-s1
+            - netizen-dev-emapi-s2
+            - netizen-dev-netiapi-s1
+            - netizen-dev-netiman-s1
+            - netizen-dev-oa-s1
+            - netizen-dev-oa-s2
+            - netizen-dev-dwsp2-s1
+            - netizen-dev-dwsp2-s2
+        networks:
+            - dev_env_net
+    #netizen dev sms pool
+    netizen-dev-sms-pool:
+        image: 'netizen/centos-tomcat:latest'
+        container_name: dev-sms-pool
+        restart: always
+        environment:
+            - "JAVA_OPTS=-server -Xms1024m -Xmx1024m -XX:MaxMetaspaceSize=256m -XX:NewSize=200m -XX:SurvivorRatio=8 -XX:+CMSClassUnloadingEnabled -XX:+UseConcMarkSweepGC\n-XX:+CMSParallelRemarkEnabled -XX:+UseCMSInitiatingOccupancyOnly -XX:CMSInitiatingOccupancyFraction=70 -XX:+ScavengeBeforeFullGC -XX:+CMSScavengeBeforeRemark -Djava.security.egd=file:/dev/./urandom"
+        networks:
+            - dev_env_net
+        volumes:
+            - './dev-env/dev-sms-pool-war:/opt/tomcat/webapps'
+            - './dev-env/conf/server.xml:/opt/tomcat/conf/server.xml'
+            - '/var/run/docker.sock:/var/run/docker.sock'
+    #netizen dev yss pool
+    netizen-dev-yss-pool:
+        image: 'netizen/centos-tomcat:latest'
+        container_name: dev-yss-pool
+        restart: always
+        environment:
+            - "JAVA_OPTS=-server -Xms1024m -Xmx1024m -XX:MaxMetaspaceSize=256m -XX:NewSize=200m -XX:SurvivorRatio=8 -XX:+CMSClassUnloadingEnabled -XX:+UseConcMarkSweepGC\n-XX:+CMSParallelRemarkEnabled -XX:+UseCMSInitiatingOccupancyOnly -XX:CMSInitiatingOccupancyFraction=70 -XX:+ScavengeBeforeFullGC -XX:+CMSScavengeBeforeRemark -Djava.security.egd=file:/dev/./urandom"
+        networks:
+            - dev_env_net
+        volumes:
+            - './dev-env/dev-yss-pool-war:/opt/tomcat/webapps'
+            - './dev-env/conf/server.xml:/opt/tomcat/conf/server.xml'
+            - '/var/run/docker.sock:/var/run/docker.sock'
+    #netizen dev eduman process engine(scheduler) 
+    netizen-dev-empe:
+        image: 'netizen/centos-tomcat:latest'
+        container_name: dev-empe
+        restart: always
+        environment:
+            - "JAVA_OPTS=-server -Xms1024m -Xmx1024m -XX:MaxMetaspaceSize=256m -XX:NewSize=200m -XX:SurvivorRatio=8 -XX:+CMSClassUnloadingEnabled -XX:+UseConcMarkSweepGC\n-XX:+CMSParallelRemarkEnabled -XX:+UseCMSInitiatingOccupancyOnly -XX:CMSInitiatingOccupancyFraction=70 -XX:+ScavengeBeforeFullGC -XX:+CMSScavengeBeforeRemark -Djava.security.egd=file:/dev/./urandom"
+        networks:
+            - dev_env_net
+        volumes:
+            - './dev-env/dev-empe-war:/opt/tomcat/webapps'
+            - './dev-env/conf/server.xml:/opt/tomcat/conf/server.xml'
+            - '/var/run/docker.sock:/var/run/docker.sock'
+    #netiman-load-balance
+    #netiman-s1
+    netizen-dev-netiman-s1:
+        image: 'netizen/centos-tomcat:latest'
+        container_name: dev-netiman-c1
+        restart: always
+        environment:
+            - "JAVA_OPTS=-server -Xms1024m -Xmx1024m -XX:MaxMetaspaceSize=256m -XX:NewSize=200m -XX:SurvivorRatio=8 -XX:+CMSClassUnloadingEnabled -XX:+UseConcMarkSweepGC\n-XX:+CMSParallelRemarkEnabled -XX:+UseCMSInitiatingOccupancyOnly -XX:CMSInitiatingOccupancyFraction=70 -XX:+ScavengeBeforeFullGC -XX:+CMSScavengeBeforeRemark -Djava.security.egd=file:/dev/./urandom"
+        networks:
+            - dev_env_net
+        volumes:
+            - './dev-env/dev-netiman-war:/opt/tomcat/webapps'
+            - './dev-env/conf/server.xml:/opt/tomcat/conf/server.xml'
+            - '/var/run/docker.sock:/var/run/docker.sock'
+    #online-admission-load-balance
+    #netizen-dev-oa-s1
+    netizen-dev-oa-s1:
+        image: 'netizen/centos-tomcat:latest'
+        container_name: dev-oa-c1
+        restart: always
+        environment:
+            - "JAVA_OPTS=-server -Xms1024m -Xmx1024m -XX:MaxMetaspaceSize=256m -XX:NewSize=200m -XX:SurvivorRatio=8 -XX:+CMSClassUnloadingEnabled -XX:+UseConcMarkSweepGC\n-XX:+CMSParallelRemarkEnabled -XX:+UseCMSInitiatingOccupancyOnly -XX:CMSInitiatingOccupancyFraction=70 -XX:+ScavengeBeforeFullGC -XX:+CMSScavengeBeforeRemark -Djava.security.egd=file:/dev/./urandom"
+        networks:
+            - dev_env_net
+        volumes:
+            - './dev-env/dev-oa-war:/opt/tomcat/webapps'
+            - './dev-env/conf/server.xml:/opt/tomcat/conf/server.xml'
+            - '/var/run/docker.sock:/var/run/docker.sock'
+    #netizen-dev-oa-s2
+    netizen-dev-oa-s2:
+        image: 'netizen/centos-tomcat:latest'
+        container_name: dev-oa-c2
+        restart: always
+        environment:
+            - "JAVA_OPTS=-server -Xms1024m -Xmx1024m -XX:MaxMetaspaceSize=256m -XX:NewSize=200m -XX:SurvivorRatio=8 -XX:+CMSClassUnloadingEnabled -XX:+UseConcMarkSweepGC\n-XX:+CMSParallelRemarkEnabled -XX:+UseCMSInitiatingOccupancyOnly -XX:CMSInitiatingOccupancyFraction=70 -XX:+ScavengeBeforeFullGC -XX:+CMSScavengeBeforeRemark -Djava.security.egd=file:/dev/./urandom"
+        networks:
+            - dev_env_net
+        volumes:
+            - './dev-env/dev-oa-war:/opt/tomcat/webapps'
+            - './dev-env/conf/server.xml:/opt/tomcat/conf/server.xml'
+            - '/var/run/docker.sock:/var/run/docker.sock'
+    #dynamic-website(p2)-load-balance
+    #netizen-dev-dwsp2-s1
+    netizen-dev-dwsp2-s1:
+        image: 'netizen/centos-tomcat:latest'
+        container_name: dev-dwsp2-c1
+        restart: always
+        environment:
+            - "JAVA_OPTS=-server -Xms1024m -Xmx1024m -XX:MaxMetaspaceSize=256m -XX:NewSize=200m -XX:SurvivorRatio=8 -XX:+CMSClassUnloadingEnabled -XX:+UseConcMarkSweepGC\n-XX:+CMSParallelRemarkEnabled -XX:+UseCMSInitiatingOccupancyOnly -XX:CMSInitiatingOccupancyFraction=70 -XX:+ScavengeBeforeFullGC -XX:+CMSScavengeBeforeRemark -Djava.security.egd=file:/dev/./urandom"
+        networks:
+            - dev_env_net
+        volumes:
+            - './dev-env/dev-dwsp2-war:/opt/tomcat/webapps'
+            - './dev-env/conf/server.xml:/opt/tomcat/conf/server.xml'
+            - '/var/run/docker.sock:/var/run/docker.sock'
+    #netizen-dev-dwsp2-s2
+    netizen-dev-dwsp2-s2:
+        image: 'netizen/centos-tomcat:latest'
+        container_name: dev-dwsp2-c2
+        restart: always
+        environment:
+            - "JAVA_OPTS=-server -Xms1024m -Xmx1024m -XX:MaxMetaspaceSize=256m -XX:NewSize=200m -XX:SurvivorRatio=8 -XX:+CMSClassUnloadingEnabled -XX:+UseConcMarkSweepGC\n-XX:+CMSParallelRemarkEnabled -XX:+UseCMSInitiatingOccupancyOnly -XX:CMSInitiatingOccupancyFraction=70 -XX:+ScavengeBeforeFullGC -XX:+CMSScavengeBeforeRemark -Djava.security.egd=file:/dev/./urandom"
+        networks:
+            - dev_env_net
+        volumes:
+            - './dev-env/dev-dwsp2-war:/opt/tomcat/webapps'
+            - './dev-env/conf/server.xml:/opt/tomcat/conf/server.xml'
+            - '/var/run/docker.sock:/var/run/docker.sock'
+    #edumanapi-load-balance
+    #netizen-dev-emapi-s1
+    netizen-dev-emapi-s1:
+        image: 'netizen/centos-tomcat:latest'
+        container_name: dev-emapi-c1
+        restart: always
+        environment:
+            - "JAVA_OPTS=-server -Xms2048m -Xmx2048m -XX:MaxMetaspaceSize=256m -XX:NewSize=400m -XX:SurvivorRatio=8 -XX:+CMSClassUnloadingEnabled -XX:+UseConcMarkSweepGC\n-XX:+CMSParallelRemarkEnabled -XX:+UseCMSInitiatingOccupancyOnly -XX:CMSInitiatingOccupancyFraction=70 -XX:+ScavengeBeforeFullGC -XX:+CMSScavengeBeforeRemark -Djava.security.egd=file:/dev/./urandom"
+        networks:
+            - dev_env_net
+        volumes:
+            - './dev-env/dev-emapi-war:/opt/tomcat/webapps'
+            - './dev-env/conf/server.xml:/opt/tomcat/conf/server.xml'
+            - '/var/run/docker.sock:/var/run/docker.sock'
+    #netizen-dev-emapi-s2
+    netizen-dev-emapi-s2:
+        image: 'netizen/centos-tomcat:latest'
+        container_name: dev-emapi-c2
+        restart: always
+        environment:
+            - "JAVA_OPTS=-server -Xms2048m -Xmx2048m -XX:MaxMetaspaceSize=256m -XX:NewSize=400m -XX:SurvivorRatio=8 -XX:+CMSClassUnloadingEnabled -XX:+UseConcMarkSweepGC\n-XX:+CMSParallelRemarkEnabled -XX:+UseCMSInitiatingOccupancyOnly -XX:CMSInitiatingOccupancyFraction=70 -XX:+ScavengeBeforeFullGC -XX:+CMSScavengeBeforeRemark -Djava.security.egd=file:/dev/./urandom"
+        networks:
+            - dev_env_net
+        volumes:
+            - './dev-env/dev-emapi-war:/opt/tomcat/webapps'
+            - './dev-env/conf/server.xml:/opt/tomcat/conf/server.xml'
+            - '/var/run/docker.sock:/var/run/docker.sock'
+    #netiapi-load-balance
+    netizen-dev-netiapi-s1:
+        image: 'netizen/centos-tomcat:latest'
+        container_name: dev-netiapi-c1
+        restart: always
+        environment:
+            - "JAVA_OPTS=-server -Xms2048m -Xmx2048m -XX:MaxMetaspaceSize=256m -XX:NewSize=400m -XX:SurvivorRatio=8 -XX:+CMSClassUnloadingEnabled -XX:+UseConcMarkSweepGC\n-XX:+CMSParallelRemarkEnabled -XX:+UseCMSInitiatingOccupancyOnly -XX:CMSInitiatingOccupancyFraction=70 -XX:+ScavengeBeforeFullGC -XX:+CMSScavengeBeforeRemark -Djava.security.egd=file:/dev/./urandom"
+        networks:
+            - dev_env_net
+        volumes:
+            - './dev-env/dev-netiapi-war:/opt/tomcat/webapps'
+            - './dev-env/conf/server.xml:/opt/tomcat/conf/server.xml'
+            - '/var/run/docker.sock:/var/run/docker.sock'
+    nginx-dev-em:
+        image: nginx
+        container_name: nginx-em
+        volumes:
+            - './nginx/ui-eduman/nginx.conf:/etc/nginx/nginx.conf'
+            - './nginx/ui-eduman/crt-api/api_bundle.crt:/etc/nginx/api_bundle.crt'
+            - './nginx/ui-eduman/crt-api/api_pri.key:/etc/nginx/api_pri.key'
+            - './nginx/ui-eduman/crt-em/uiem_bundle.crt:/etc/nginx/uiem_bundle.crt'
+            - './nginx/ui-eduman/crt-em/uiem_pri.key:/etc/nginx/uiem_pri.key'
+            - './nginx/ui-eduman/content:/usr/share/nginx/html'
+        ports:
+            - '9191:9191'
+            - '50050:50050'
+        links:
+            - netizen-dev-loadbalancer
+        networks:
+            - dev_env_net
+
+    nginx-dev-nw:
+        image: nginx
+        container_name: nginx-nw
+        volumes:
+            - './nginx/ui-netiworld/nginx.conf:/etc/nginx/nginx.conf'
+            - './nginx/ui-netiworld/crt-api/api_bundle.crt:/etc/nginx/api_bundle.crt'
+            - './nginx/ui-netiworld/crt-api/api_pri.key:/etc/nginx/api_pri.key'
+            - './nginx/ui-netiworld/crt-nw/nw_bundle.crt:/etc/nginx/nw_bundle.crt'
+            - './nginx/ui-netiworld/crt-nw/nw_pri.key:/etc/nginx/nw_pri.key'
+            - './nginx/ui-netiworld/content:/usr/share/nginx/html'
+        ports:
+            - '9292:9292'
+            - '50060:50060'
+        links:
+            - netizen-dev-loadbalancer
+        networks:
+            - dev_env_net
+networks:
+    dev_env_net:
+        driver: bridge

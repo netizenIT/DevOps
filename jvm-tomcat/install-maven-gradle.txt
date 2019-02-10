@@ -4,7 +4,7 @@ Download latest maven from https://maven.apache.org/download.cgi
 
 $ sudo su
 $ cd /opt
-$ wget http://www-us.apache.org/dist/maven/maven-3/3.5.4/binaries/apache-maven-3.5.4-bin.zip
+$ wget https://www-eu.apache.org/dist/maven/maven-3/3.6.0/binaries/apache-maven-3.6.0-bin.zip
 $ unzip apache-maven-3.5.4-bin.zip
 $ vi /etc/profile.d/maven.sh
 --Add--
