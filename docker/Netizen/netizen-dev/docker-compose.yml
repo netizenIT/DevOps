@@ -141,6 +141,11 @@ services:
             - dev_env_net
         volumes:
             - './dev-env/dev-emapi-war:/opt/tomcat/webapps'
+            - './dev-env/images/eduman/default-images:/opt/tomcat/images/eduman/default-images'
+            - './dev-env/images/eduman/institute-images:/opt/tomcat/images/eduman/institute-images'
+            - './dev-env/images/eduman/staff-images:/opt/tomcat/images/eduman/staff-images'
+            - './dev-env/images/eduman/student-images:/opt/tomcat/images/eduman/student-images'
+            - './dev-env/images/eduman/attatchment:/opt/tomcat/images/eduman/attatchment'
             - './dev-env/conf/server.xml:/opt/tomcat/conf/server.xml'
             - '/var/run/docker.sock:/var/run/docker.sock'
     #netizen-dev-emapi-s2
@@ -154,6 +159,11 @@ services:
             - dev_env_net
         volumes:
             - './dev-env/dev-emapi-war:/opt/tomcat/webapps'
+            - './dev-env/images/eduman/default-images:/opt/tomcat/images/eduman/default-images'
+            - './dev-env/images/eduman/institute-images:/opt/tomcat/images/eduman/institute-images'
+            - './dev-env/images/eduman/staff-images:/opt/tomcat/images/eduman/staff-images'
+            - './dev-env/images/eduman/student-images:/opt/tomcat/images/eduman/student-images'
+            - './dev-env/images/eduman/attatchment:/opt/tomcat/images/eduman/attatchment'
             - './dev-env/conf/server.xml:/opt/tomcat/conf/server.xml'
             - '/var/run/docker.sock:/var/run/docker.sock'
     #netiapi-load-balance
