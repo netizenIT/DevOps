@@ -172,6 +172,7 @@ services:
     nginx-dev-em:
         image: nginx
         container_name: nginx-em
+        restart: always
         volumes:
             - './nginx/ui-eduman/nginx.conf:/etc/nginx/nginx.conf'
             - './nginx/ui-eduman/crt-api/api_bundle.crt:/etc/nginx/api_bundle.crt'
@@ -190,6 +191,7 @@ services:
     nginx-dev-nw:
         image: nginx
         container_name: nginx-nw
+        restart: always
         volumes:
             - './nginx/ui-netiworld/nginx.conf:/etc/nginx/nginx.conf'
             - './nginx/ui-netiworld/crt-api/api_bundle.crt:/etc/nginx/api_bundle.crt'
